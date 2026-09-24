@@ -1,0 +1,43 @@
+<Page
+    x:Class="BlurTool.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="Transparent">
+
+    <ScrollViewer>
+        <StackPanel Margin="28,28,28,60" Spacing="18">
+            <TextBlock Text="设置" Style="{ThemeResource TitleLargeTextBlockStyle}" />
+
+            <Border
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="8"
+                Padding="16">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="画面捕获方式" Style="{ThemeResource BodyStrongTextBlockStyle}" />
+                    <ComboBox
+                        x:Name="CaptureModeCombo"
+                        HorizontalAlignment="Stretch"
+                        SelectionChanged="CaptureModeCombo_SelectionChanged">
+                        <ComboBoxItem Content="Graphics Capture（推荐）" Tag="0" />
+                        <ComboBoxItem Content="Desktop Duplication" Tag="1" />
+                        <ComboBoxItem Content="GDI" Tag="2" />
+                        <ComboBoxItem Content="DwmSharedSurface（实验性）" Tag="3" />
+                    </ComboBox>
+                </StackPanel>
+            </Border>
+
+            <Button x:Name="ResetButton" Content="恢复默认设置" Click="ResetButton_Click" />
+
+            <TextBlock
+                x:Name="VersionText"
+                Style="{ThemeResource CaptionTextBlockStyle}"
+                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                Margin="0,8,0,0" />
+        </StackPanel>
+    </ScrollViewer>
+</Page>

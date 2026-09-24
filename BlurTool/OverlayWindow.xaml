@@ -1,0 +1,65 @@
+<Window
+    x:Class="BlurTool.OverlayWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:canvas="using:Microsoft.Graphics.Canvas.UI.Xaml">
+
+    <Grid x:Name="RootGrid" Background="#FF000000">
+        <canvas:CanvasControl x:Name="BlurCanvas" Draw="OnDraw" SizeChanged="OnCanvasSizeChanged" UseSharedDevice="True" />
+
+        <Canvas
+            x:Name="EditLayer"
+            Visibility="Collapsed"
+            Background="Transparent"
+            DoubleTapped="EditLayer_DoubleTapped">
+            <!-- 多边形外发光 -->
+            <Polygon
+                x:Name="SelectionGlowPolygon"
+                Stroke="{ThemeResource AccentFillColorDefaultBrush}"
+                StrokeThickness="8"
+                Opacity="0.25"
+                Fill="Transparent" />
+
+            <!-- 多边形边框（可整体拖动） -->
+            <Polygon
+                x:Name="SelectionPolygon"
+                Stroke="{ThemeResource AccentFillColorDefaultBrush}"
+                StrokeThickness="2"
+                Fill="Transparent"
+                ManipulationMode="TranslateX,TranslateY"
+                ManipulationDelta="Selection_ManipulationDelta" />
+        </Canvas>
+
+        <Border
+            x:Name="EditToolbar"
+            Visibility="Collapsed"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Center"
+            Margin="0,0,0,22"
+            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+            BorderThickness="1"
+            CornerRadius="10"
+            Padding="14,9">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+                <FontIcon Glyph="&#xE7C4;" FontSize="14" VerticalAlignment="Center" />
+                <TextBlock
+                    Text="拖动调整，双击加点，右键删点"
+                    VerticalAlignment="Center"
+                    Style="{ThemeResource CaptionTextBlockStyle}" />
+                <TextBlock
+                    x:Name="RegionSizeText"
+                    VerticalAlignment="Center"
+                    Style="{ThemeResource CaptionTextBlockStyle}"
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                <Button
+                    Content="重置全窗口"
+                    Click="ResetRegion_Click" />
+                <Button
+                    Content="确定"
+                    Click="ConfirmEdit_Click"
+                    Style="{ThemeResource AccentButtonStyle}" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
