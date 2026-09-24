@@ -1,0 +1,51 @@
+# WindowBlurTool
+
+基于 WinUI 3 的窗口高斯模糊叠加工具，用 GPU 对任意窗口做高斯模糊。
+
+[English](README.md)
+
+## 功能
+
+- 全局快捷键开关模糊，可自定义
+- 模糊半径 0 ~ 150，实时生效
+- 多边形模糊区域，支持加点、删点、拖动
+- 可锁定目标进程，快捷键只对该进程生效
+- 四种画面捕获方式
+- 点击与滚轮穿透，不抢键盘焦点
+
+## 快捷键
+
+| 功能 | 默认 |
+| --- | --- |
+| 开关模糊 | `Ctrl + Shift + B` |
+| 编辑模糊区域 | `Ctrl + Shift + E` |
+| 锁定目标进程 | `Ctrl + Shift + L` |
+
+## 使用
+
+1. 目标窗口置于前台，按 `Ctrl + Shift + B`。
+2. 按 `Ctrl + Shift + E` 编辑区域。拖动顶点移动位置，双击边线加点，右键顶点删点，点「确定」退出编辑；退出后恢复编辑前的模糊状态。
+3. 在「目标进程」中选择进程即可锁定。
+
+## 捕获方式
+
+| 方式 | 说明 |
+| --- | --- |
+| Graphics Capture | 默认，兼容性最好 |
+| Desktop Duplication | 捕获整屏后裁剪到窗口 |
+| GDI | `PrintWindow`，失败回退 `BitBlt` |
+| DwmSharedSurface | 实验性 |
+
+持续失败的方式会自动回退到 GDI。
+
+## 构建
+
+需要 .NET 8 SDK 与 Windows 10 2004（19041）或更高版本。
+
+```powershell
+dotnet run --project BlurTool
+```
+
+## 许可证
+
+[MIT](LICENSE)

@@ -1,49 +1,51 @@
 # WindowBlurTool
 
-Windows 窗口高斯模糊叠加工具，基于 WinUI 3。
+A WinUI 3 overlay that applies GPU-accelerated Gaussian blur to any window on Windows.
 
-## 功能
+[中文说明](README.zh-CN.md)
 
-- 全局快捷键开启 / 关闭模糊，可自定义
-- 模糊半径 0 ~ 150 实时生效
-- 任意多边形模糊区域，支持加点、删点、整体拖动
-- 可锁定目标进程，之后只对该进程响应快捷键
-- 四种画面捕获方式
-- 鼠标点击与滚轮穿透，不抢键盘焦点
+## Features
 
-## 快捷键
+- Global hotkeys to toggle blur, customizable
+- Blur radius 0–150, applied live
+- Polygonal blur region; add, remove and drag vertices
+- Lock onto a target process so hotkeys only affect it
+- Four capture backends
+- Click and wheel pass through, keyboard focus is never stolen
 
-| 功能 | 默认 |
+## Hotkeys
+
+| Action | Default |
 | --- | --- |
-| 开启 / 关闭模糊 | `Ctrl + Shift + B` |
-| 调整模糊范围 | `Ctrl + Shift + E` |
-| 锁定目标进程 | `Ctrl + Shift + L` |
+| Toggle blur | `Ctrl + Shift + B` |
+| Edit blur region | `Ctrl + Shift + E` |
+| Lock target process | `Ctrl + Shift + L` |
 
-## 使用
+## Usage
 
-1. 目标窗口置于前台，按 `Ctrl + Shift + B` 开关模糊。
-2. 按 `Ctrl + Shift + E` 编辑区域：拖动定位点，双击边线加点，右键顶点删点，点「确定」退出。退出后保持进入编辑前的模糊状态。
-3. 在「目标进程」中选择进程即可锁定。
+1. Bring the target window to the foreground and press `Ctrl + Shift + B`.
+2. Press `Ctrl + Shift + E` to edit the region. Drag a vertex to move it, double-click an edge to add a vertex, right-click a vertex to remove it. Click **OK** to leave edit mode; the blur state from before the edit is restored.
+3. Pick a process under **Target process** to lock onto it.
 
-## 捕获方式
+## Capture backends
 
-| 方式 | 说明 |
+| Backend | Notes |
 | --- | --- |
-| Graphics Capture | 默认，兼容性最好 |
-| Desktop Duplication | 整屏捕获后裁剪到窗口 |
-| GDI | `PrintWindow` 优先，失败回退 `BitBlt` |
-| DwmSharedSurface | 实验性 |
+| Graphics Capture | Default; best compatibility |
+| Desktop Duplication | Captures the whole display, then crops to the window |
+| GDI | `PrintWindow`, falling back to `BitBlt` |
+| DwmSharedSurface | Experimental |
 
-失败时自动回退到 GDI。
+A backend that keeps failing falls back to GDI.
 
-## 构建
+## Build
 
-需要 .NET 8 SDK 与 Windows 10 2004（19041）以上系统。
+Requires the .NET 8 SDK and Windows 10 2004 (build 19041) or later.
 
 ```powershell
 dotnet run --project BlurTool
 ```
 
-## 许可证
+## License
 
 [MIT](LICENSE)
