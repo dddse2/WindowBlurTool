@@ -1,6 +1,6 @@
 # WindowBlurTool
 
-Windows 窗口高斯模糊叠加工具（程序名 BlurTool），基于 WinUI 3。
+Windows 窗口高斯模糊叠加工具，基于 WinUI 3。
 
 ## 功能
 
@@ -41,24 +41,8 @@ Windows 窗口高斯模糊叠加工具（程序名 BlurTool），基于 WinUI 3�
 需要 .NET 8 SDK 与 Windows 10 2004（19041）以上系统。
 
 ```powershell
-dotnet build
 dotnet run --project BlurTool
 ```
-
-## 发布
-
-```powershell
-# 框架依赖单文件，约 41 MB，需要 .NET 8 Desktop Runtime 与 Windows App Runtime
-powershell -ExecutionPolicy Bypass -File .\publish-singlefile.ps1
-
-# 自包含目录，约 164 MB，无运行时依赖
-powershell -ExecutionPolicy Bypass -File .\publish-singlefile.ps1 -Mode Portable
-```
-
-## 说明
-
-- WinUI 窗口无法逐像素透明，模糊区域以外显示的是捕获到的原始画面
-- 叠加层设置了 `WDA_EXCLUDEFROMCAPTURE`，不会被录屏软件拍到
 
 ## 许可证
 

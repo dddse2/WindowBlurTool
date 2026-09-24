@@ -20,5 +20,10 @@ generated-images/
 publish/
 *.publish.xml
 
+# Local-only files (kept on disk, not published)
+CHANGELOG.md
+publish-singlefile.ps1
+runWinUI.bat
+
 # Others
 *.log
