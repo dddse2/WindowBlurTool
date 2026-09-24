@@ -250,22 +250,6 @@
                 </StackPanel>
             </Border>
 
-            <Border
-                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                BorderThickness="1"
-                CornerRadius="8"
-                Padding="16">
-                <StackPanel Spacing="10">
-                    <TextBlock Text="模糊范围" Style="{ThemeResource BodyStrongTextBlockStyle}" />
-                    <StackPanel Orientation="Horizontal" Spacing="12">
-                        <Button x:Name="EditRegionNowButton" Content="调整模糊范围" Click="EditRegionNowButton_Click" />
-                        <Button x:Name="ResetRegionButton" Content="重置为全窗口" Click="ResetRegionButton_Click" />
-                    </StackPanel>
-                </StackPanel>
-            </Border>
-
-            <Button x:Name="BlurNowButton" Content="立即模糊当前前台窗口" Click="BlurNowButton_Click" Margin="0,8,0,0" />
         </StackPanel>
     </ScrollViewer>
 </Page>

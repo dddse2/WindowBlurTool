@@ -312,18 +312,4 @@ public sealed partial class HomePage : Page
         MainWindow.Current?.SaveSettings();
     }
 
-    private void BlurNowButton_Click(object sender, RoutedEventArgs e)
-    {
-        MainWindow.Current?.StartBlurOnForegroundWindow();
-    }
-
-    private void EditRegionNowButton_Click(object sender, RoutedEventArgs e)
-    {
-        MainWindow.Current?.StartEditRegionOnForegroundWindow();
-    }
-
-    private void ResetRegionButton_Click(object sender, RoutedEventArgs e)
-    {
-        MainWindow.Current?.ResetRegion();
-    }
 }

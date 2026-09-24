@@ -271,57 +271,11 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    /// <summary>把模糊范围重置为整个窗口。</summary>
-    public void ResetRegion()
-    {
-        Settings.RegionPoints = new List<RegionPoint>();
-        Settings.RegionX = 0;
-        Settings.RegionY = 0;
-        Settings.RegionWidth = 1;
-        Settings.RegionHeight = 1;
-        SettingsStorage.Save(Settings);
-
-        try
-        {
-            _overlay?.ResetRegion();
-        }
-        catch (Exception ex)
-        {
-            Log.Write(ex);
-        }
-    }
-
     private void RaiseBlurStateChanged()
     {
         try
         {
             BlurStateChanged?.Invoke(this, EventArgs.Empty);
-        }
-        catch (Exception ex)
-        {
-            Log.Write(ex);
-        }
-    }
-
-    /// <summary>供主页“立即模糊”按钮调用。</summary>
-    public void StartBlurOnForegroundWindow()
-    {
-        try
-        {
-            ToggleBlur();
-        }
-        catch (Exception ex)
-        {
-            Log.Write(ex);
-        }
-    }
-
-    /// <summary>供主页“调整模糊范围”按钮调用。</summary>
-    public void StartEditRegionOnForegroundWindow()
-    {
-        try
-        {
-            ToggleEditRegion();
         }
         catch (Exception ex)
         {

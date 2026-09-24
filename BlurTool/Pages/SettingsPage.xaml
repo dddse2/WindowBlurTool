@@ -33,11 +33,37 @@
 
             <Button x:Name="ResetButton" Content="恢复默认设置" Click="ResetButton_Click" />
 
-            <TextBlock
-                x:Name="VersionText"
-                Style="{ThemeResource CaptionTextBlockStyle}"
-                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                Margin="0,8,0,0" />
+            <Border
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="8"
+                Padding="16">
+                <StackPanel Spacing="8">
+                    <TextBlock Text="关于" Style="{ThemeResource BodyStrongTextBlockStyle}" />
+
+                    <TextBlock
+                        x:Name="VersionText"
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+
+                    <TextBlock
+                        Text="作者：Nikaidou_Shinku"
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+
+                    <HyperlinkButton
+                        Content="github.com/dddse2/WindowBlurTool"
+                        NavigateUri="https://github.com/dddse2/WindowBlurTool"
+                        Padding="0"
+                        FontSize="12" />
+
+                    <TextBlock
+                        Text="基于 MIT 许可证开源"
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                </StackPanel>
+            </Border>
         </StackPanel>
     </ScrollViewer>
 </Page>
